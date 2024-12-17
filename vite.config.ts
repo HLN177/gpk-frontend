@@ -1,3 +1,4 @@
+import { fileURLToPath, URL } from 'node:url';
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 import { defineConfig } from 'vite';
@@ -27,5 +28,10 @@ export default defineConfig({
       ],
       dts: './auto-imports.d.ts'
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
 });
