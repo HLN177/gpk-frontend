@@ -1,13 +1,10 @@
-import { createPinia } from 'pinia';
+import { registerPlugins } from '@/plugins';
 import { createApp } from 'vue';
 import App from './App.vue';
-import i18n from './shared/i18n/i18n';
 import '@/assets/main.less';
 
 const app = createApp(App);
-const pinia = createPinia();
 
-app.use(pinia);
-app.use(i18n);
+registerPlugins(app);
 
 app.mount('#app');

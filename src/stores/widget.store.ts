@@ -1,16 +1,7 @@
+import type { Product } from '@/types/widget';
 import { defineStore } from 'pinia';
 
-export interface Product {
-  id: number
-  type: 'carbon' | 'plastic' | 'trees'
-  amount: number
-  action: 'collects' | 'plants' | 'offsets'
-  active: boolean
-  linked: boolean
-  selectedColor: 'white' | 'black' | 'blue' | 'green' | 'beige'
-}
-
-export const useProductStore = defineStore('product', () => {
+export const useWidgetStore = defineStore('widgetStore', () => {
   const products = ref<Product[]>([{
     id: 1,
     type: 'carbon',

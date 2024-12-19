@@ -1,3 +1,11 @@
 {
-  "title": "Per product widgets"
+  "product_widgets_title": "Per product widgets",
+  "this_product": "This product",
+  "plastic_unit": "plastic bottles",
+  "trees_unit": "trees",
+  "carbon_unit": "kgs of carbon",
+  "link_to_public_profile": "Link to Public Profile",
+  "badge_colour": "Badge colour",
+  "activate_badge": "Activate badge",
+  "view_public_profile": "View Public Profile"
 }

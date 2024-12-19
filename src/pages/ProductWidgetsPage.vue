@@ -1,35 +1,41 @@
 <script setup lang="ts">
-import CustomCheckbox from '@/components/CustomCheckbox.vue';
+import ProductWidget from '@/components/ProductWidget.vue';
 import { i18t } from '@/shared/i18n/i18n';
-import { useProductStore } from '@/stores/product.store.ts';
+import { useWidgetStore } from '@/stores/widget.store';
+import { storeToRefs } from 'pinia';
 
-const productStore = useProductStore();
-const isChecked = ref(false);
+const widgetStore = useWidgetStore();
+const { products } = storeToRefs(widgetStore);
 
 onMounted(async () => {
   // const result = await productStore.fetchProducts();
   // console.log(result);
 });
-
-function handleChange(event) {
-  console.log('Checkbox状态变更:', event.target.checked);
-}
 </script>
 
 <template>
-  <div class="product">
+  <div class="product-widgets">
     <div class="title">
-      {{ i18t('title') }}
+      {{ i18t('product_widgets_title') }}
     </div>
     <hr>
     <div class="content">
-      <CustomCheckbox v-model="isChecked" @change="handleChange" />
+      <ProductWidget
+        v-for="item in products"
+        :key="item.id"
+        class="card"
+      />
     </div>
   </div>
 </template>
 
 <style lang="less" scoped>
-.product {
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+.product-widgets {
+  min-width: 851px;
   padding: 36px;
   border-radius: 8px;
   opacity: 0px;
@@ -47,7 +53,6 @@ function handleChange(event) {
     font-size: 30px;
     font-weight: 700;
     line-height: 36px;
-    text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
   }

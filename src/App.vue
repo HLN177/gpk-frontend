@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ProductWidgets from './pages/ProductWidgets.vue';
+import ProductWidgetsPage from './pages/ProductWidgetsPage.vue';
 </script>
 
 <template>
   <div class="container">
-    <ProductWidgets />
+    <ProductWidgetsPage />
   </div>
 </template>
 
