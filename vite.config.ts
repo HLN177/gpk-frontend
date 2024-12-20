@@ -2,7 +2,6 @@ import { fileURLToPath, URL } from 'node:url';
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 import { defineConfig } from 'vite';
-
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 
 // https://vite.dev/config/
