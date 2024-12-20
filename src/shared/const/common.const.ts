@@ -18,6 +18,11 @@ export const COLOR_MAP = {
 
 export const COLOR_LIST = Object.entries(COLOR_MAP) as [ColorType, Color][];
 
+/**
+ * Generate badge font color by its background color
+ *
+ * @param bgColor - The background color
+ */
 export function genBadgeFontColor(bgColor: string) {
   switch (bgColor) {
     case COLOR.WHITE:
