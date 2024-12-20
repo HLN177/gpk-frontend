@@ -49,10 +49,11 @@ function handleColorChange(color: ColorType) {
 
 <template>
   <v-card
-    class="pa-4"
-    width="300"
-    :rounded="false"
+    class="product-widget pa-4"
+    :rounded="true"
+    :border="6"
     variant="flat"
+    :hover="true"
   >
     <ProductWidgetBadge
       :selected-color="props.selectedColor"
@@ -66,13 +67,36 @@ function handleColorChange(color: ColorType) {
         no-gutters
       >
         <v-col cols="auto">
-          <v-input
-            class="label"
-            :hide-details="true"
-            density="compact"
+          <v-tooltip
+            activator="hover"
+            :open-delay="200"
+            :close-delay="1500"
+            location="top"
+            content-class="custom-tooltip"
           >
-            {{ i18t('link_to_public_profile') }}
-          </v-input>
+            <template #default>
+              <div class="tooltip-content">
+                <p>
+                  {{ i18t('link_profile_tooltip') }}
+                </p>
+                <a href="#" class="tooltip-link" :title="i18t('view_public_profile')">{{ i18t('view_public_profile') }}</a>
+              </div>
+            </template>
+            <template #activator="{ props: activeProp }">
+              <v-input
+                class="label"
+                :hide-details="true"
+                density="compact"
+              >
+                <template #default>
+                  {{ i18t('link_to_public_profile') }}
+                </template>
+                <template #append>
+                  <v-icon size="xsmall" icon="mdi-information-outline" v-bind="activeProp" />
+                </template>
+              </v-input>
+            </template>
+          </v-tooltip>
         </v-col>
         <v-col cols="auto">
           <v-checkbox
@@ -122,6 +146,7 @@ function handleColorChange(color: ColorType) {
         </v-col>
         <v-col cols="2">
           <v-switch
+            class="custom-switch"
             :model-value="props.active"
             :hide-details="true"
             :color="COMPONENT_COLOR"
@@ -134,7 +159,17 @@ function handleColorChange(color: ColorType) {
   </v-card>
 </template>
 
+<style>
+.custom-tooltip {
+  background-color: #ffffff !important;
+}
+</style>
+
 <style lang="less" scoped>
+.product-widget {
+  background-color: inherit;
+}
+
 .widget-content {
   padding: 0;
 }
@@ -144,5 +179,43 @@ function handleColorChange(color: ColorType) {
   font-weight: 400;
   letter-spacing: 0.5px;
   color: #3b755f;
+}
+
+.label ::v-deep(.v-input__append) {
+  margin-inline-start: 0 !important;
+}
+
+.tooltip-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  max-width: 250px;
+}
+
+.tooltip-link {
+  display: block;
+  margin-top: 8px;
+  color: #3b755f;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.tooltip-link:hover {
+  text-decoration: underline;
+}
+
+.custom-switch ::v-deep(.v-switch__thumb) {
+  background-color: #ffffff !important;
+}
+.custom-switch ::v-deep(.v-switch__track) {
+  opacity: 1 !important;
+  background-color: #ffffff;
+  border: 0.5px solid #afc6bd;
+  height: 23px;
 }
 </style>

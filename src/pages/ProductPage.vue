@@ -14,10 +14,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <v-container>
+  <v-container class="product-container">
     <v-row>
       <v-col cols="12">
-        <h2 class="text-h5">
+        <h2 class="page-title">
           {{ i18t('product_widgets_title') }}
         </h2>
       </v-col>
@@ -54,4 +54,22 @@ onMounted(async () => {
 </template>
 
 <style lang="less" scoped>
+.page-title {
+  font-weight: 700;
+  font-size: 1.5rem !important;
+  line-height: 1.333;
+}
+
+.product-container {
+  max-width: 1180px;
+  padding: 36px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0.78px 2.99px 0px #00000003;
+  box-shadow: 0px 3.42px 6.19px 0px #00000005;
+  box-shadow: 0px 8.4px 12.35px 0px #00000006;
+  box-shadow: 0px 16.18px 24.21px 0px #00000008;
+  box-shadow: 0px 27.22px 44.51px 0px #0000000a;
+  box-shadow: 0px 42px 76px 0px #0000000d;
+}
 </style>
