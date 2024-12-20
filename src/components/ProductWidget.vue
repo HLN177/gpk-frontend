@@ -13,11 +13,14 @@ interface Props {
   active: boolean
   linked: boolean
   selectedColor: ColorType
+  maxWidth?: number | string
 }
 
 const props = withDefaults(
   defineProps<Props>(),
-  {}
+  {
+    maxWidth: 500
+  }
 );
 
 const emit = defineEmits<{
@@ -52,6 +55,7 @@ function handleColorChange(color: ColorType) {
     class="product-widget pa-4"
     :rounded="true"
     :border="6"
+    :max-width="props.maxWidth"
     variant="flat"
     :hover="true"
   >
@@ -144,7 +148,7 @@ function handleColorChange(color: ColorType) {
             {{ i18t('activate_badge') }}
           </v-input>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="auto">
           <v-switch
             class="custom-switch"
             :model-value="props.active"
@@ -207,6 +211,11 @@ function handleColorChange(color: ColorType) {
 
 .tooltip-link:hover {
   text-decoration: underline;
+}
+
+.custom-switch {
+  position: relative;
+  right: 5px;
 }
 
 .custom-switch ::v-deep(.v-switch__thumb) {

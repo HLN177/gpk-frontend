@@ -26,6 +26,9 @@ const meta: Meta<typeof ProductWidget> = {
     action: {
       control: 'select',
       options: ['collects', 'plants', 'offsets']
+    },
+    maxWidth: {
+      control: 'number'
     }
   }
 };
@@ -41,7 +44,8 @@ export const Default: Story = {
     action: 'offsets',
     active: false,
     linked: false,
-    selectedColor: 'green'
+    selectedColor: 'green',
+    maxWidth: 500
   }
 };
 
