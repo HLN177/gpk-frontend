@@ -4,6 +4,8 @@ export type ActionType = 'collects' | 'plants' | 'offsets';
 
 export type ColorType = 'white' | 'black' | 'blue' | 'green' | 'beige';
 
+export type Color = string;
+
 export interface Product {
   id: number
   type: ProductType

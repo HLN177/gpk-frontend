@@ -5,7 +5,9 @@ import ProductPage from './pages/ProductPage.vue';
 <template>
   <v-app>
     <v-main>
-      <ProductPage />
+      <v-container class="fill-height">
+        <ProductPage />
+      </v-container>
     </v-main>
   </v-app>
 </template>
